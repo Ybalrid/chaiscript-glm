@@ -79,8 +79,8 @@ static ModulePtr get_glm_module()
 	glm_module->add(fun(static_cast<quat(*)(const quat&, const quat&)>(operator*)), "*");
 	glm_module->add(fun(static_cast<vec3(*)(const quat&, const vec3&)>(operator*)), "*");
 	glm_module->add(fun(static_cast<quat(*)(const quat&)>(conjugate)), "conjugate");
-	glm_module->add(fun(static_cast<quat(*)(const quat&)>(inverse)), "conjugate");
-	glm_module->add(fun(static_cast<quat(*)(const quat&)>(inverse)), "normalize");
+	glm_module->add(fun(static_cast<quat(*)(const quat&)>(inverse)), "inverse");
+	glm_module->add(fun(static_cast<quat(*)(const quat&)>(normalize)), "normalize");
 	glm_module->add(fun(static_cast<quat(*)(const quat&, const float&, const vec3&)>(rotate)), "rotate");
 	glm_module->add(fun(static_cast<quat(*)(const quat&, const quat&, float)> (mix)), "mix");
 	glm_module->add(fun(static_cast<quat(*)(const quat&, const quat&, float)> (mix)), "slerp");
