@@ -4,13 +4,17 @@
 #include <glm/gtc/quaternion.hpp>
 #include <chaiscript/chaiscript.hpp>
 #include <string>
+#include "transform.hpp"
 
 static ModulePtr get_glm_module()
 {
+
+	//ddglm::pi<transform>;
 	using namespace chaiscript;
 	using namespace glm;
 	using namespace std;
 	ModulePtr glm_module = ModulePtr(new Module);
+
 	////scalar
 	glm_module->add(fun(static_cast<float(*)(float, float, float)>(clamp)), "clamp");
 	glm_module->add(fun(static_cast<float(*)(float, float, float)>(mix)), "mix");
@@ -91,6 +95,70 @@ static ModulePtr get_glm_module()
 		+ to_string(q.x) + ", " 
 		+ to_string(q.y) + ", " 
 		+ to_string(q.z) + ")"; }), "to_string");
+
+
+	////2D vector
+	glm_module->add(user_type<vec2>(), "vec2");
+	glm_module->add(constructor<vec2(float)>(), "vec2");
+	glm_module->add(constructor<vec2(float, float)>(), "vec2");
+	glm_module->add(constructor<vec2(const vec2&)>(), "vec2");
+	glm_module->add(constructor<vec2()>(), "vec2");
+	glm_module->add(fun(&vec2::x), "x");
+	glm_module->add(fun(&vec2::y), "y");
+	glm_module->add(fun(static_cast<vec2(*)(const vec2&, const vec2&)>(operator+)), "+");
+	glm_module->add(fun(static_cast<vec2(*)(const vec2&, const vec2&)>(operator-)), "-");
+	glm_module->add(fun(static_cast<vec2(*)(const vec2&)>(operator-)), "-");
+	glm_module->add(fun(static_cast<vec2(*)(const vec2&, const vec2&)>(operator*)), "*");
+	glm_module->add(fun(static_cast<vec2(*)(float, const vec2&)>(operator*)), "*");
+	glm_module->add(fun(static_cast<vec2(*)(const vec2&, float)>(operator*)), "*");
+	glm_module->add(fun(static_cast<vec2(*)(const vec2&)>(normalize)), "normalize");
+	//glm_module->add(fun(static_cast<vec2(*)(const vec2&, const vec2&)>(cross)), "cross");
+	glm_module->add(fun(static_cast<vec2(*)(const vec2&, const vec2&)>(reflect)), "reflect");
+	glm_module->add(fun(static_cast<float(*)(const vec2&)>(length)), "length");
+	glm_module->add(fun(static_cast<float(*)(const vec2&, const vec2&)>(dot)), "dot");
+	glm_module->add(fun(static_cast<float(*)(const vec2&, const vec2&)>(distance)), "distance");
+	glm_module->add(fun(static_cast<vec2(*)(const vec2&, const vec2&, float)>(refract)), "refract");
+	glm_module->add(fun(static_cast<vec2(*)(const vec2&, const vec2&, float)>(mix)), "mix");
+	glm_module->add(fun([](const vec2& a, const vec2& b) { return all(equal(a, b)); }), "==");
+	glm_module->add(fun([](const vec2& v) -> std::string
+	{ return "vec2(" 
+		+ to_string(v.x) + ", " 
+		+ to_string(v.y) + ", " 
+	+ ")"; }), "to_string");
+
+
+	////4D vector
+	glm_module->add(user_type<vec4>(), "vec4");
+	glm_module->add(constructor<vec4(float)>(), "vec4");
+	glm_module->add(constructor<vec4(float, float, float, float)>(), "vec4");
+	glm_module->add(constructor<vec4(const vec4&)>(), "vec4");
+	glm_module->add(constructor<vec4()>(), "vec4");
+	glm_module->add(fun(&vec4::x), "x");
+	glm_module->add(fun(&vec4::y), "y");
+	glm_module->add(fun(&vec4::z), "z");
+	glm_module->add(fun(&vec4::w), "w");
+	glm_module->add(fun(static_cast<vec4(*)(const vec4&, const vec4&)>(operator+)), "+");
+	glm_module->add(fun(static_cast<vec4(*)(const vec4&, const vec4&)>(operator-)), "-");
+	glm_module->add(fun(static_cast<vec4(*)(const vec4&)>(operator-)), "-");
+	glm_module->add(fun(static_cast<vec4(*)(const vec4&, const vec4&)>(operator*)), "*");
+	glm_module->add(fun(static_cast<vec4(*)(float, const vec4&)>(operator*)), "*");
+	//glm_module->add(fun(static_cast<vec4(*)(const vec4&, float)>(operator*)), "*");
+	glm_module->add(fun(static_cast<vec4(*)(const vec4&)>(normalize)), "normalize");
+	//glm_module->add(fun(static_cast<vec4(*)(const vec4&, const vec4&)>(cross)), "cross");
+	glm_module->add(fun(static_cast<vec4(*)(const vec4&, const vec4&)>(reflect)), "reflect");
+	glm_module->add(fun(static_cast<float(*)(const vec4&)>(length)), "length");
+	glm_module->add(fun(static_cast<float(*)(const vec4&, const vec4&)>(dot)), "dot");
+	glm_module->add(fun(static_cast<float(*)(const vec4&, const vec4&)>(distance)), "distance");
+	glm_module->add(fun(static_cast<vec4(*)(const vec4&, const vec4&, float)>(refract)), "refract");
+	glm_module->add(fun(static_cast<vec4(*)(const vec4&, const vec4&, float)>(mix)), "mix");
+	glm_module->add(fun([](const vec4& a, const vec4& b) { return all(equal(a, b)); }), "==");
+	glm_module->add(fun([](const vec4& v) -> std::string
+	{ return "vec4(" 
+		+ to_string(v.x) + ", " 
+		+ to_string(v.y) + ", " 
+		+ to_string(v.z) + ", " 
+		+ to_string(v.w) + ")"; }), "to_string");
+
 
 	return glm_module;
 }
