@@ -9,7 +9,6 @@
 static ModulePtr get_glm_module()
 {
 
-	//ddglm::pi<transform>;
 	using namespace chaiscript;
 	using namespace glm;
 	using namespace std;
