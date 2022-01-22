@@ -5,8 +5,6 @@ OpenGL Mathematics bindings for ChaiScript
 
 This is a single header file that buids and return a [ChaiScript](https://github.com/chaiscript/chaiscript) module that contains binding to the [OpenGL Mathematics](https://glm.g-truc.net/0.9.9/index.html) library, intended to provide vector math capabilities to a scripting interface for 3D video game engines, using OpenGL and GLSL's conventions, but in ChaiScript.
 
-This thing is licenced under the [MIT](https://opensource.org/licenses/MIT) licence.
-
 ## How to use
 
  1) Just setup [ChaiScript first](https://github.com/ChaiScript/ChaiScript/blob/develop/cheatsheet.md#initializing-chaiscript) in your project 
@@ -28,6 +26,6 @@ This thing is licenced under the [MIT](https://opensource.org/licenses/MIT) lice
  }
  ```
  
- This will allow you to be able to use glm as part as your scripting entierface!
+ This will allow you to be able to use glm as part as your scripting interface!
  
  ![chai_glm.png](chai_glm.png)
