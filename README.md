@@ -26,6 +26,6 @@ This is a single header file that buids and return a [ChaiScript](https://github
  }
  ```
  
- This will allow you to be able to use glm as part as your scripting interface!
+ This will allow you to be able to use glm as part of your scripting interface!
  
  ![chai_glm.png](chai_glm.png)
